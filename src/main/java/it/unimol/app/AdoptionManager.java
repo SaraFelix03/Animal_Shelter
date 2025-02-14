@@ -1,17 +1,18 @@
 package it.unimol.app;
 
+import it.unimol.app.exceptions.*;
+
 import java.io.Serializable;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AdoptionManager implements Serializable {
     private static final long serialVersionUID = 1L;
-    private static AdoptionManager instance;
-    private static Map<Integer, Adoption> adoptions;
+    private static int adopterIdCounter;
 
-    private AdoptionManager() {
-        adoptions = new HashMap();
-    }
+    private static AdoptionManager instance;
+    private static List<Adopter> adopterList;
+    private static Map<Integer, Adoption> adoptions;
 
     public static AdoptionManager getInstance() {
         if (instance == null) {
@@ -20,4 +21,42 @@ public class AdoptionManager implements Serializable {
 
         return instance;
     }
+
+    public static int getNewAdopterID() {
+        adopterIdCounter++;
+        return adopterIdCounter;
+    }
+
+    public static int getLastAdopterID() {
+        return adopterIdCounter;
+    }
+
+    public void registerNewAdopter(Adopter adopter) throws AdopterAlreadyRegistered {
+        if(!adopterList.contains(adopter)) {
+            adopterList.add(adopter);
+        }
+        throw new AdopterAlreadyRegistered();
+    }
+
+    public void registerNewAdoption(int animalId, Adoption adoption) throws AnimalAlreadyAdoptedException {
+        if(adoptions.containsKey(animalId)){
+            throw new AnimalAlreadyAdoptedException();
+        }
+        adoptions.put(animalId, adoption);
+    }
+
+    public Adoption findAdoptionInfo(int animalID) throws AnimalNotAdopted {
+        if(!adoptions.containsKey(animalID)){
+            throw new AnimalNotAdopted();
+        }
+        return adoptions.get(animalID);
+    }
+
+    public Adopter findAdopterByID(int id) throws AdopterNotExists {
+        return adopterList.stream()
+                .filter(adopter -> adopter.getId() == id)
+                .findFirst()
+                .orElseThrow(AdopterNotExists::new);
+    }
+
 }

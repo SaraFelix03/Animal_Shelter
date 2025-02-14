@@ -1,4 +1,72 @@
 package it.unimol.app;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    private String street;
+    private String streetNumber;
+    private String city;
+    private String postalCode;
+    private String country;
+
+    public Address(String street, String streetNumber, String city, String postalCode, String country) {
+        this.street = street;
+        this.streetNumber = streetNumber;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.country = country;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
+    public void setStreetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "street='" + street + '\'' +
+                ", streetNumber='" + streetNumber + '\'' +
+                ", city='" + city + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", country='" + country + '\'' +
+                '}';
+    }
 }
