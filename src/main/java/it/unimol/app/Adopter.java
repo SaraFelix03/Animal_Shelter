@@ -1,5 +1,7 @@
 package it.unimol.app;
 
+import it.unimol.app.managers.AdoptionManager;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,5 +1,7 @@
-package it.unimol.app;
+package it.unimol.app.managers;
 
+import it.unimol.app.Adopter;
+import it.unimol.app.Adoption;
 import it.unimol.app.exceptions.*;
 
 import java.io.Serializable;

@@ -2,6 +2,7 @@ package it.unimol.app;
 
 import it.unimol.app.enumerations.AdoptionStatus;
 import it.unimol.app.enumerations.HealthStatus;
+import it.unimol.app.managers.AnimalsManager;
 
 import java.io.Serializable;
 import java.time.LocalDate;

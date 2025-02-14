@@ -1,4 +1,6 @@
-package it.unimol.app;
+package it.unimol.app.managers;
+
+import it.unimol.app.VeterinaryVisit;
 
 import java.io.Serializable;
 import java.util.HashMap;
