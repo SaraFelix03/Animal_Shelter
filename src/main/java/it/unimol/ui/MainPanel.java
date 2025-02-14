@@ -4,17 +4,18 @@ import it.unimol.app.managers.AdoptionManager;
 import it.unimol.app.managers.AnimalsManager;
 import it.unimol.app.managers.MedicalHistoryManager;
 
+
 import java.io.IOException;
 import java.util.Scanner;
 
-public class MainPanel implements Panel{
+public class MainPanel implements Panel {
     private static final int ADD_NEW_ANIMAL = 1;
     private static final int AVAIBLE_ANIMALS = 2;
-    private static final int REGISTER_ADOPTION= 3;
+    private static final int REGISTER_ADOPTION = 3;
     private static final int RECORD_VISIT = 4;
     private static final int SHOW_STATISTICS = 5;
     private static final int SEARCH_ANIMALS = 6;
-    private static final int PENDING_ADOPTIONS= 7;
+    private static final int PENDING_ADOPTIONS = 7;
     private static final int ESCI = 0;
 
     private static MainPanel instance;
@@ -23,9 +24,9 @@ public class MainPanel implements Panel{
     private MedicalHistoryManager medicalHistoryManager;
 
     private MainPanel() {
-        adoptionManager=AdoptionManager.getInstance();
-        animalsManager=AnimalsManager.getInstance();
-        medicalHistoryManager=MedicalHistoryManager.getInstance();
+        adoptionManager = AdoptionManager.getInstance();
+        animalsManager = AnimalsManager.getInstance();
+        medicalHistoryManager = MedicalHistoryManager.getInstance();
     }
 
     public static MainPanel getInstance() {
@@ -48,14 +49,14 @@ public class MainPanel implements Panel{
         animalsManager = AnimalsManager.getInstance();
 
         boolean exit = false;
-        do{
+        do {
             printMenu();
             exit = manageUserInput();
 
-        }while(!exit);
+        } while (!exit);
     }
 
-    private void printMenu(){
+    private void printMenu() {
         System.out.println("///  WELCOME!  ///");
 
         System.out.println("Chose your operation:");
@@ -71,7 +72,7 @@ public class MainPanel implements Panel{
         System.out.println("Choice:");
     }
 
-    public boolean manageUserInput(){
+    public boolean manageUserInput() {
         Scanner sc = new Scanner(System.in);
         int input = Integer.parseInt(sc.nextLine());
 
@@ -82,7 +83,7 @@ public class MainPanel implements Panel{
                     return false;
 
                 case AVAIBLE_ANIMALS:
-                    // @todo showAvaibleAnimals();
+                    showAvaibleAnimals();
                     return false;
 
                 case REGISTER_ADOPTION:
@@ -109,9 +110,17 @@ public class MainPanel implements Panel{
                 case ESCI:
                     return true;
 
-                default: System.out.println("Insert a valid number.");
+                default:
+                    System.out.println("Insert a valid number.");
                     return false;
             }
-        }while(input <0 || input > 5);
+        } while (input < 0 || input > 5);
     }
+
+    private void showAvaibleAnimals(){
+        AvailableAnimalsPanel availableAnimalsPanel = new AvailableAnimalsPanel(animalsManager);
+        availableAnimalsPanel.start();
+    }
+
+
 }
