@@ -5,17 +5,16 @@ import it.unimol.app.enumerations.ContractStatus;
 import it.unimol.app.exceptions.*;
 import it.unimol.app.managers.*;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class AdoptionPanel implements Panel{
 
     private AnimalsManager animalsManager;
-    private AdoptionManager adoptionManager;
 
-    public AdoptionPanel(AnimalsManager animalsManager, AdoptionManager adoptionManager){
+    public AdoptionPanel(AnimalsManager animalsManager){
         this.animalsManager = animalsManager;
-        this.adoptionManager = adoptionManager;
     }
 
     @Override
@@ -48,9 +47,11 @@ public class AdoptionPanel implements Panel{
         Adoption newAdoption = new Adoption(adoptedAnimal.getID(), adopter.getId(), LocalDate.now(),contractStatus);
 
         try{
-            adoptionManager.registerNewAdoption(animalId,newAdoption);
+            animalsManager.registerAdoption(adoptedAnimal, newAdoption);
         }catch(AnimalAlreadyAdoptedException animalAlreadyAdoptedException){
             System.out.println("Animal already adopted!");
+        }catch(IOException ioException){
+            System.out.println("IO error");
         }
 
         adopter.addNewAdoptedAnimal(adoptedAnimal);
@@ -112,7 +113,7 @@ public class AdoptionPanel implements Panel{
                     int adopterId = Integer.parseInt(sc.nextLine());
                     Adopter adopter;
 
-                    adopter= adoptionManager.findAdopterByID(adopterId);
+                    adopter= animalsManager.getAdoptionManager().findAdopterByID(adopterId);
 
                     return adopter;
 

@@ -129,7 +129,7 @@ public class MainPanel implements Panel {
     }
 
     private void registerNewAdoption(){
-        AdoptionPanel adoptionPanel = new AdoptionPanel(animalsManager,adoptionManager);
+        AdoptionPanel adoptionPanel = new AdoptionPanel(animalsManager);
         adoptionPanel.start();
     }
 

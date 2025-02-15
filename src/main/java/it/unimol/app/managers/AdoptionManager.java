@@ -5,6 +5,8 @@ import it.unimol.app.Adoption;
 import it.unimol.app.exceptions.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +17,11 @@ public class AdoptionManager implements Serializable {
     private static AdoptionManager instance;
     private static List<Adopter> adopterList;
     private static Map<Integer, Adoption> adoptions;
+
+    public AdoptionManager() {
+        adoptions = new HashMap<Integer, Adoption>();
+        adopterList = new ArrayList<Adopter>();
+    }
 
     public static AdoptionManager getInstance() {
         if (instance == null) {
@@ -45,7 +52,7 @@ public class AdoptionManager implements Serializable {
     }
 
     public void registerNewAdoption(int animalId, Adoption adoption) throws AnimalAlreadyAdoptedException {
-        if(adoptions.containsKey(animalId)){
+        if(!adoptions.isEmpty() && adoptions.containsKey(animalId)){
             throw new AnimalAlreadyAdoptedException();
         }
         adoptions.put(animalId, adoption);

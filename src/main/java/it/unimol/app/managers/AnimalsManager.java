@@ -1,11 +1,8 @@
 package it.unimol.app.managers;
 
-import it.unimol.app.Animal;
-import it.unimol.app.VeterinaryVisit;
-import it.unimol.app.enumerations.AdoptionStatus;
-import it.unimol.app.enumerations.HealthStatus;
-import it.unimol.app.exceptions.AnimalAlreadyRegistered;
-import it.unimol.app.exceptions.AnimalNotExists;
+import it.unimol.app.*;
+import it.unimol.app.enumerations.*;
+import it.unimol.app.exceptions.*;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -65,6 +62,10 @@ public class AnimalsManager implements Serializable {
 
     public MedicalHistoryManager getMedicalHistoryManager() {
         return medicalHistoryManager;
+    }
+
+    public AdoptionManager getAdoptionManager(){
+        return adoptionManager;
     }
 
     public static void AnimalsManagerInitialize() throws IOException {
@@ -216,6 +217,12 @@ public class AnimalsManager implements Serializable {
         } else {
             return availableAnimals;
         }
+    }
+
+    public void registerAdoption(Animal animal, Adoption adoption) throws AnimalAlreadyAdoptedException, IOException {
+        adoptionManager.registerNewAdoption(animal.getID(), adoption);
+        animal.setAdoptionStatus(AdoptionStatus.ADOPTED);
+        saveManager();
     }
 
     public void registerNewVetVisit(int animalID, VeterinaryVisit visit){
