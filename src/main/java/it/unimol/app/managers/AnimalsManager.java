@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static it.unimol.app.enumerations.AdoptionStatus.WAITING;
+import static java.util.stream.Nodes.collect;
 
 public class AnimalsManager implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -166,6 +167,37 @@ public class AnimalsManager implements Serializable {
         });
     }
 
+    public List findAnimalsBySpecies(String species) throws AnimalNotExists{
+        List <Animal> animalsFound = this.animals.stream().filter(animal-> animal.getSpecies().
+                equalsIgnoreCase(species)).collect(Collectors.toList());
+        if (animalsFound.isEmpty()) {
+            throw new AnimalNotExists();
+        } else {
+            return animalsFound;
+        }
+    }
+
+    public List findAnimalsByHealthStatus(HealthStatus healthStatus) throws AnimalNotExists{
+        List<Animal> animalsFound = this.animals.stream().filter(animal-> animal.getHealthStatus()==healthStatus)
+                .collect(Collectors.toList());
+        if (animalsFound.isEmpty()) {
+            throw new AnimalNotExists();
+        } else {
+            return animalsFound;
+        }
+    }
+
+    public List findAnimalsByAdoptionStatus(AdoptionStatus adoptionStatus) throws AnimalNotExists{
+        List<Animal> animalsFound = this.animals.stream().filter(animal-> animal.getAdoptionStatus()==adoptionStatus)
+                .collect(Collectors.toList());
+        if (animalsFound.isEmpty()) {
+            throw new AnimalNotExists();
+        } else {
+            return animalsFound;
+        }
+    }
+
+
     public void removeAnimalByID(int id) throws AnimalNotExists, IOException {
         Animal animalFound = this.findAnimalByID(id);
         this.animals.remove(animalFound);
@@ -173,7 +205,7 @@ public class AnimalsManager implements Serializable {
     }
 
     public List<Animal> findAvailableAnimals() throws AnimalNotExists {
-        List<Animal> availableAnimals = (List)this.animals.stream().filter((animal) -> {
+        List availableAnimals =this.animals.stream().filter((animal) -> {
             return animal.getAdoptionStatus() == AdoptionStatus.AVAILABLE;
         }).collect(Collectors.toList());
         if (availableAnimals.isEmpty()) {

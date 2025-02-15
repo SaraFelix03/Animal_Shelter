@@ -100,7 +100,7 @@ public class MainPanel implements Panel {
                     return false;
 
                 case SEARCH_ANIMALS:
-                    // @todo searchAnimals();
+                    searchAnimals();
                     return false;
 
                 case PENDING_ADOPTIONS:
@@ -141,6 +141,11 @@ public class MainPanel implements Panel {
     private void showShelterStatistics(){
         ShelterStatisticsPanel shelterStatisticsPanel = new ShelterStatisticsPanel(animalsManager);
         shelterStatisticsPanel.start();
+    }
+
+    private void searchAnimals(){
+        AnimalResearchPanel animalResearchPanel = new AnimalResearchPanel(animalsManager);
+        animalResearchPanel.start();
     }
 
 }
