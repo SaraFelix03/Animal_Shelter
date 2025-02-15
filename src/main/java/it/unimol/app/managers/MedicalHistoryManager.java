@@ -2,6 +2,7 @@ package it.unimol.app.managers;
 
 import it.unimol.app.Animal;
 import it.unimol.app.VeterinaryVisit;
+import it.unimol.app.exceptions.NoRegistredVisitsException;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -37,4 +38,16 @@ public class MedicalHistoryManager implements Serializable {
         visitsHistory.put(animalID, visits);
     }
 
+    public List<VeterinaryVisit> getAllVisits() throws NoRegistredVisitsException{
+        List<VeterinaryVisit> visits = new ArrayList<>(List.of());
+
+        for (Map.Entry<Integer, List<VeterinaryVisit>> entry : visitsHistory.entrySet()) {
+            visits.addAll(entry.getValue());
+        }
+
+        if(visits.isEmpty()){
+            throw new NoRegistredVisitsException();
+        }
+        return visits;
+    }
 }

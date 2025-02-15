@@ -16,7 +16,7 @@ public class MainPanel implements Panel {
     private static final int RECORD_VISIT = 4;
     private static final int SHOW_STATISTICS = 5;
     private static final int SEARCH_ANIMALS = 6;
-    private static final int PENDING_ADOPTIONS = 7;
+    private static final int SHELTER_EXPENCES = 7;
     private static final int ESCI = 0;
 
     private static MainPanel instance;
@@ -67,7 +67,7 @@ public class MainPanel implements Panel {
         System.out.println("4) Record Veterinary Visit");
         System.out.println("5) Generate Shelter Statistics");
         System.out.println("6) Search Animals");
-        System.out.println("7) View Pending Adoptions");
+        System.out.println("7) Show veterinary expenses");
         System.out.println("0) EXIT");
 
         System.out.println("Choice:");
@@ -103,8 +103,8 @@ public class MainPanel implements Panel {
                     searchAnimals();
                     return false;
 
-                case PENDING_ADOPTIONS:
-                    // @todo showPendingAdoptions();
+                case SHELTER_EXPENCES:
+                    showExpences();
                     return false;
 
 
@@ -146,6 +146,11 @@ public class MainPanel implements Panel {
     private void searchAnimals(){
         AnimalResearchPanel animalResearchPanel = new AnimalResearchPanel(animalsManager);
         animalResearchPanel.start();
+    }
+
+    private void showExpences(){
+        ExpencesPanel expencesPanel = new ExpencesPanel(animalsManager);
+        expencesPanel.start();
     }
 
 }

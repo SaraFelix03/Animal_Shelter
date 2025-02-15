@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static it.unimol.app.enumerations.AdoptionStatus.WAITING;
-import static java.util.stream.Nodes.collect;
 
 public class AnimalsManager implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -53,7 +52,7 @@ public class AnimalsManager implements Serializable {
     }
 
     public int getTotalAdoptions(){
-        return this.adoptionManager.getTotalAdoptions();
+        return adoptionManager.getTotalAdoptions();
     }
 
     public int getTotalAnimalsWaitingForAdoption() {
@@ -62,6 +61,10 @@ public class AnimalsManager implements Serializable {
 
     public int getTotalAnimalsCriticalCondition() {
         return (int) this.animals.stream().filter(animal -> animal.getHealthStatus() == HealthStatus.CRITICAL).count();
+    }
+
+    public MedicalHistoryManager getMedicalHistoryManager() {
+        return medicalHistoryManager;
     }
 
     public static void AnimalsManagerInitialize() throws IOException {
