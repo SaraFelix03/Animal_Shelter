@@ -1,5 +1,6 @@
 package it.unimol.ui;
 
+import it.unimol.app.VeterinaryVisit;
 import it.unimol.app.managers.AdoptionManager;
 import it.unimol.app.managers.AnimalsManager;
 import it.unimol.app.managers.MedicalHistoryManager;
@@ -91,7 +92,7 @@ public class MainPanel implements Panel {
                     return false;
 
                 case RECORD_VISIT:
-                    // @todo recordNewVisit();
+                    recordNewVisit();
                     return false;
 
                 case SHOW_STATISTICS:
@@ -130,6 +131,11 @@ public class MainPanel implements Panel {
     private void registerNewAdoption(){
         AdoptionPanel adoptionPanel = new AdoptionPanel(animalsManager,adoptionManager);
         adoptionPanel.start();
+    }
+
+    private void recordNewVisit(){
+        VeterinaryVisitPanel veterinaryVisitPanel = new VeterinaryVisitPanel(animalsManager);
+        veterinaryVisitPanel.start();
     }
 
 }

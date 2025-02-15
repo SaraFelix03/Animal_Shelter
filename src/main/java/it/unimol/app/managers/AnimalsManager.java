@@ -1,6 +1,7 @@
 package it.unimol.app.managers;
 
 import it.unimol.app.Animal;
+import it.unimol.app.VeterinaryVisit;
 import it.unimol.app.enumerations.AdoptionStatus;
 import it.unimol.app.exceptions.AnimalAlreadyRegistered;
 import it.unimol.app.exceptions.AnimalNotExists;
@@ -160,6 +161,15 @@ public class AnimalsManager implements Serializable {
             throw new AnimalNotExists();
         } else {
             return availableAnimals;
+        }
+    }
+
+    public void registerNewVetVisit(int animalID, VeterinaryVisit visit){
+        medicalHistoryManager.registerNewVisit(animalID, visit);
+        try{
+            this.saveManager();
+        }catch(IOException ioException){
+            System.out.println("IOException in AnimalsManager");
         }
     }
 }

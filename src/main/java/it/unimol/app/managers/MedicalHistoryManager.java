@@ -26,16 +26,15 @@ public class MedicalHistoryManager implements Serializable {
         return instance;
     }
 
-    public void registerNewVisit(Animal animal, VeterinaryVisit visit) {
+    protected void registerNewVisit(int animalID, VeterinaryVisit visit) {
         List<VeterinaryVisit> visits;
-        if(visitsHistory.containsKey(animal.getID())){
-            visits = visitsHistory.get(animal.getID());
+        if(visitsHistory.containsKey(animalID)){
+            visits = visitsHistory.get(animalID);
         }else{
             visits = new ArrayList<>(20);
         }
         visits.add(visit);
-        visitsHistory.put(animal.getID(), visits);
+        visitsHistory.put(animalID, visits);
     }
-
 
 }

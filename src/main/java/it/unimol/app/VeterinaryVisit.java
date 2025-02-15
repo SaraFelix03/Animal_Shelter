@@ -10,10 +10,10 @@ public class VeterinaryVisit implements Serializable {
     private String veterinaryName;
     private String diagnosis;
     private String prescriptions;
-    private String cost;
+    private Float cost;
 
     public VeterinaryVisit(LocalDate dateOfVisit, String veterinaryName,
-                           String diagnosis, String prescriptions, String cost) {
+                           String diagnosis, String prescriptions, Float cost) {
         this.dateOfVisit = dateOfVisit;
         this.veterinaryName = veterinaryName;
         this.diagnosis = diagnosis;
@@ -53,11 +53,11 @@ public class VeterinaryVisit implements Serializable {
         this.prescriptions = prescriptions;
     }
 
-    public String getCost() {
+    public Float getCost() {
         return cost;
     }
 
-    public void setCost(String cost) {
+    public void setCost(Float cost) {
         this.cost = cost;
     }
 
