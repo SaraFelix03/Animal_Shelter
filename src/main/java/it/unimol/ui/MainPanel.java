@@ -79,7 +79,7 @@ public class MainPanel implements Panel {
         do {
             switch (input) {
                 case ADD_NEW_ANIMAL:
-                    // @todo addNewAnimal();
+                    addNewAnimal();
                     return false;
 
                 case AVAIBLE_ANIMALS:
@@ -87,7 +87,7 @@ public class MainPanel implements Panel {
                     return false;
 
                 case REGISTER_ADOPTION:
-                    // @todo registerNewAdoption();
+                    registerNewAdoption();
                     return false;
 
                 case RECORD_VISIT:
@@ -117,10 +117,19 @@ public class MainPanel implements Panel {
         } while (input < 0 || input > 5);
     }
 
+    private void addNewAnimal(){
+        AnimalRegistrationPanel animalRegistrationPanel = new AnimalRegistrationPanel(animalsManager);
+        animalRegistrationPanel.start();
+    }
+
     private void showAvaibleAnimals(){
         AvailableAnimalsPanel availableAnimalsPanel = new AvailableAnimalsPanel(animalsManager);
         availableAnimalsPanel.start();
     }
 
+    private void registerNewAdoption(){
+        AdoptionPanel adoptionPanel = new AdoptionPanel(animalsManager,adoptionManager);
+        adoptionPanel.start();
+    }
 
 }
