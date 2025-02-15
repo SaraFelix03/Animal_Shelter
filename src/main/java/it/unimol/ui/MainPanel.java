@@ -96,7 +96,7 @@ public class MainPanel implements Panel {
                     return false;
 
                 case SHOW_STATISTICS:
-                    // @todo showShelterStatistics();
+                    showShelterStatistics();
                     return false;
 
                 case SEARCH_ANIMALS:
@@ -136,6 +136,11 @@ public class MainPanel implements Panel {
     private void recordNewVisit(){
         VeterinaryVisitPanel veterinaryVisitPanel = new VeterinaryVisitPanel(animalsManager);
         veterinaryVisitPanel.start();
+    }
+
+    private void showShelterStatistics(){
+        ShelterStatisticsPanel shelterStatisticsPanel = new ShelterStatisticsPanel(animalsManager);
+        shelterStatisticsPanel.start();
     }
 
 }

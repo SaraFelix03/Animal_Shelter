@@ -33,6 +33,10 @@ public class AdoptionManager implements Serializable {
         return adopterIdCounter;
     }
 
+    protected int getTotalAdoptions(){
+        return adoptions.size();
+    }
+
     public void registerNewAdopter(Adopter adopter) throws AdopterAlreadyRegistered {
         if(!adopterList.contains(adopter)) {
             adopterList.add(adopter);

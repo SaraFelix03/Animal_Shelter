@@ -3,6 +3,7 @@ package it.unimol.app.managers;
 import it.unimol.app.Animal;
 import it.unimol.app.VeterinaryVisit;
 import it.unimol.app.enumerations.AdoptionStatus;
+import it.unimol.app.enumerations.HealthStatus;
 import it.unimol.app.exceptions.AnimalAlreadyRegistered;
 import it.unimol.app.exceptions.AnimalNotExists;
 
@@ -10,6 +11,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static it.unimol.app.enumerations.AdoptionStatus.WAITING;
 
 public class AnimalsManager implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -42,6 +45,22 @@ public class AnimalsManager implements Serializable {
 
     public static int getLastID() {
         return idCounter;
+    }
+
+    public int getTotalAnimals(){
+        return this.animals.size();
+    }
+
+    public int getTotalAdoptions(){
+        return this.adoptionManager.getTotalAdoptions();
+    }
+
+    public int getTotalAnimalsWaitingForAdoption() {
+        return (int) this.animals.stream().filter(animal -> animal.getAdoptionStatus() == WAITING).count();
+    }
+
+    public int getTotalAnimalsCriticalCondition() {
+        return (int) this.animals.stream().filter(animal -> animal.getHealthStatus() == HealthStatus.CRITICAL).count();
     }
 
     public static void AnimalsManagerInitialize() throws IOException {
@@ -172,4 +191,6 @@ public class AnimalsManager implements Serializable {
             System.out.println("IOException in AnimalsManager");
         }
     }
+
+
 }
