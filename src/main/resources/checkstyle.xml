@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE module SYSTEM
+        "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+    <module name="TreeWalker">
+
+        <module name="ConstantName"/>
+        <module name="LocalVariableName"/>
+        <module name="ParameterName"/>
+
+        <module name="WhitespaceAround"/>
+        <module name="LeftCurly"/>
+        <module name="RightCurly"/>
+        <module name="Indentation">
+            <property name="tabWidth" value="4"/>
+        </module>
+        <module name="NeedBraces"/>
+        <module name="EqualsHashCode"/>
+        <module name="MissingOverride"/>
+
+        <module name="UnusedImports"/>
+
+        <module name="IllegalCatch"/>
+
+    </module>
+</module>

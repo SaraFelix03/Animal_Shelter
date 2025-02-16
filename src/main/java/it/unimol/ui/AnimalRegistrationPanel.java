@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class AnimalRegistrationPanel implements Panel{
+public class AnimalRegistrationPanel implements Panel {
     private AnimalsManager animalsManager;
 
     public AnimalRegistrationPanel(AnimalsManager animalsManager) {
@@ -40,18 +40,18 @@ public class AnimalRegistrationPanel implements Panel{
         String furtherInfo = sc.nextLine();
 
         Animal newAnimal = new Animal(name,species,age,admissionDate,healthStatus,adoptionStatus,furtherInfo);
-        try{
+        try {
             animalsManager.addAnimal(newAnimal);
             System.out.println("Animal added!");
-        }catch(AnimalAlreadyRegistered e){
+        } catch (AnimalAlreadyRegistered e) {
             System.out.println("Animal already registered!");
-        }catch(IOException e ){
+        } catch (IOException e ) {
             System.out.println("IO Exception");
         }
 
     }
 
-    private HealthStatus manageHealthStatusOptions(){
+    private HealthStatus manageHealthStatusOptions() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Select the health status:");
@@ -76,7 +76,7 @@ public class AnimalRegistrationPanel implements Panel{
         return status;
     }
 
-    private AdoptionStatus adoptionStatusOptions(){
+    private AdoptionStatus adoptionStatusOptions() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Select the adoption status:");

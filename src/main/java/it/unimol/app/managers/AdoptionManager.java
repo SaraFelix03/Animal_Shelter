@@ -33,7 +33,7 @@ public class AdoptionManager implements Serializable {
 
     public static void resetInstance() {
         instance = null;
-        adopterIdCounter=0;
+        adopterIdCounter = 0;
         adopterList.clear();
         adoptions.clear();
     }
@@ -47,12 +47,12 @@ public class AdoptionManager implements Serializable {
         return adopterIdCounter;
     }
 
-    protected int getTotalAdoptions(){
+    protected int getTotalAdoptions() {
         return adoptions.size();
     }
 
     public void registerNewAdopter(Adopter adopter) throws AdopterAlreadyRegistered {
-        if(!adopterList.contains(adopter)) {
+        if (!adopterList.contains(adopter)) {
             adopterList.add(adopter);
             return;
         }
@@ -60,14 +60,14 @@ public class AdoptionManager implements Serializable {
     }
 
     public void registerNewAdoption(int animalId, Adoption adoption) throws AnimalAlreadyAdoptedException {
-        if(!adoptions.isEmpty() && adoptions.containsKey(animalId)){
+        if (!adoptions.isEmpty() && adoptions.containsKey(animalId)) {
             throw new AnimalAlreadyAdoptedException();
         }
         adoptions.put(animalId, adoption);
     }
 
     public Adoption findAdoptionInfo(int animalID) throws AnimalNotAdopted {
-        if(!adoptions.containsKey(animalID)){
+        if (!adoptions.containsKey(animalID)) {
             throw new AnimalNotAdopted();
         }
         return adoptions.get(animalID);

@@ -96,8 +96,12 @@ public class Animal implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Animal animal)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Animal animal)) {
+            return false;
+        }
         return getID() == animal.getID() && Objects.equals(getName(), animal.getName())
                 && Objects.equals(getSpecies(), animal.getSpecies()) && Objects.equals(getAge(), animal.getAge())
                 && Objects.equals(getAdmissionDate(), animal.getAdmissionDate())

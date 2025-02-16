@@ -7,22 +7,22 @@ import it.unimol.app.managers.MedicalHistoryManager;
 
 import java.util.List;
 
-public class ExpencesPanel implements Panel{
+public class ExpencesPanel implements Panel {
 
     private AnimalsManager animalsManager;
-    public ExpencesPanel(AnimalsManager animalsManager){
-        this.animalsManager=animalsManager;
+    public ExpencesPanel(AnimalsManager animalsManager) {
+        this.animalsManager = animalsManager;
     }
 
     @Override
     public void start() {
 
-        MedicalHistoryManager medicalHistoryManager=animalsManager.getMedicalHistoryManager();
+        MedicalHistoryManager medicalHistoryManager = animalsManager.getMedicalHistoryManager();
         List<VeterinaryVisit> visits;
 
-        try{
-            visits=medicalHistoryManager.getAllVisits();
-        }catch(NoRegistredVisitsException noRegistredVisitsException){
+        try {
+            visits = medicalHistoryManager.getAllVisits();
+        } catch (NoRegistredVisitsException noRegistredVisitsException) {
             System.out.println("No medical history found");
             return;
         }

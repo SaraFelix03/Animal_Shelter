@@ -8,40 +8,40 @@ import java.time.LocalDate;
 public class Adoption implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private int adopter_id;
-    private int animal_id;
-    private LocalDate adopted_on;
+    private int adopterId;
+    private int animalId;
+    private LocalDate adoptedOn;
     private ContractStatus contractStatus;
 
-    public Adoption(int adopter_id, int animal_id, LocalDate adopted_on, ContractStatus contractStatus) {
-        this.adopter_id = adopter_id;
-        this.animal_id = animal_id;
-        this.adopted_on = adopted_on;
+    public Adoption(int adopterId, int animalId, LocalDate adoptedOn, ContractStatus contractStatus) {
+        this.adopterId = adopterId;
+        this.animalId = animalId;
+        this.adoptedOn = adoptedOn;
         this.contractStatus = contractStatus;
     }
 
-    public int getAdopter_id() {
-        return adopter_id;
+    public int getAdopterId() {
+        return adopterId;
     }
 
-    public void setAdopter_id(int adopter_id) {
-        this.adopter_id = adopter_id;
+    public void setAdopterId(int adopterId) {
+        this.adopterId = adopterId;
     }
 
-    public int getAnimal_id() {
-        return animal_id;
+    public int getAnimalId() {
+        return animalId;
     }
 
-    public void setAnimal_id(int animal_id) {
-        this.animal_id = animal_id;
+    public void setAnimalId(int animalId) {
+        this.animalId = animalId;
     }
 
-    public LocalDate getAdopted_on() {
-        return adopted_on;
+    public LocalDate getAdoptedOn() {
+        return adoptedOn;
     }
 
-    public void setAdopted_on(LocalDate adopted_on) {
-        this.adopted_on = adopted_on;
+    public void setAdoptedOn(LocalDate adoptedOn) {
+        this.adoptedOn = adoptedOn;
     }
 
     public ContractStatus getContractStatus() {
@@ -55,9 +55,9 @@ public class Adoption implements Serializable {
     @Override
     public String toString() {
         return "Adoption{" +
-                "adopter_id=" + adopter_id +
-                ", animal_id=" + animal_id +
-                ", adopted_on=" + adopted_on +
+                "adopter_id=" + adopterId +
+                ", animal_id=" + animalId +
+                ", adopted_on=" + adoptedOn +
                 ", contractStatus=" + contractStatus +
                 '}';
     }

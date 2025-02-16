@@ -52,11 +52,11 @@ public class AnimalsManager implements Serializable {
         return idCounter;
     }
 
-    public int getTotalAnimals(){
+    public int getTotalAnimals() {
         return this.animals.size();
     }
 
-    public int getTotalAdoptions(){
+    public int getTotalAdoptions() {
         return adoptionManager.getTotalAdoptions();
     }
 
@@ -72,11 +72,11 @@ public class AnimalsManager implements Serializable {
         return medicalHistoryManager;
     }
 
-    public AdoptionManager getAdoptionManager(){
+    public AdoptionManager getAdoptionManager() {
         return adoptionManager;
     }
 
-    public void createNewSerializationFile(String fileName){
+    public void createNewSerializationFile(String fileName) {
         serializationFileName = fileName;
     }
 
@@ -85,77 +85,30 @@ public class AnimalsManager implements Serializable {
     }
 
     private void saveManager() throws IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream(serializationFileName);
+        try (FileOutputStream fileOutputStream = new FileOutputStream(serializationFileName);
+             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
 
-        try {
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-
-            try {
-                objectOutputStream.writeObject(this);
-            } catch (Throwable var7) {
-                try {
-                    objectOutputStream.close();
-                } catch (Throwable var6) {
-                    var7.addSuppressed(var6);
-                }
-
-                throw var7;
-            }
-
-            objectOutputStream.close();
-        } catch (Throwable var8) {
-            try {
-                fileOutputStream.close();
-            } catch (Throwable var5) {
-                var8.addSuppressed(var5);
-            }
-
-            throw var8;
+            objectOutputStream.writeObject(this);
         }
-
-        fileOutputStream.close();
     }
 
-    public static AnimalsManager loadManager() throws FileNotFoundException, IOException {
-        try {
-            FileInputStream fileInputStream = new FileInputStream(serializationFileName);
 
-            AnimalsManager var3;
-            try {
-                ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+    public static AnimalsManager loadManager() throws IOException {
+        File file = new File(serializationFileName);
 
-                try {
-                    Object o = objectInputStream.readObject();
-                    var3 = (AnimalsManager)o;
-                } catch (Throwable var6) {
-                    try {
-                        objectInputStream.close();
-                    } catch (Throwable var5) {
-                        var6.addSuppressed(var5);
-                    }
-
-                    throw var6;
-                }
-
-                objectInputStream.close();
-            } catch (Throwable var7) {
-                try {
-                    fileInputStream.close();
-                } catch (Throwable var4) {
-                    var7.addSuppressed(var4);
-                }
-
-                throw var7;
-            }
-
-            fileInputStream.close();
-            return var3;
-        } catch (FileNotFoundException var8) {
+        if (!file.exists()) {
             return new AnimalsManager(serializationFileName);
-        } catch (ClassNotFoundException var9) {
+        }
+
+        try (FileInputStream fileInputStream = new FileInputStream(file);
+             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
+
+            return (AnimalsManager) objectInputStream.readObject();
+        } catch (ClassNotFoundException e) {
             return null;
         }
     }
+
 
     public void addAnimal(Animal animal) throws AnimalAlreadyRegistered, IOException {
         if (this.animals.contains(animal)) {
@@ -175,8 +128,8 @@ public class AnimalsManager implements Serializable {
         });
     }
 
-    public List findAnimalsBySpecies(String species) throws AnimalNotExists{
-        List <Animal> animalsFound = this.animals.stream().filter(animal-> animal.getSpecies().
+    public List findAnimalsBySpecies(String species) throws AnimalNotExists {
+        List <Animal> animalsFound = this.animals.stream().filter(animal -> animal.getSpecies().
                 equalsIgnoreCase(species)).collect(Collectors.toList());
         if (animalsFound.isEmpty()) {
             throw new AnimalNotExists();
@@ -185,8 +138,8 @@ public class AnimalsManager implements Serializable {
         }
     }
 
-    public List findAnimalsByHealthStatus(HealthStatus healthStatus) throws AnimalNotExists{
-        List<Animal> animalsFound = this.animals.stream().filter(animal-> animal.getHealthStatus()==healthStatus)
+    public List findAnimalsByHealthStatus(HealthStatus healthStatus) throws AnimalNotExists {
+        List<Animal> animalsFound = this.animals.stream().filter(animal -> animal.getHealthStatus() == healthStatus)
                 .collect(Collectors.toList());
         if (animalsFound.isEmpty()) {
             throw new AnimalNotExists();
@@ -195,8 +148,8 @@ public class AnimalsManager implements Serializable {
         }
     }
 
-    public List findAnimalsByAdoptionStatus(AdoptionStatus adoptionStatus) throws AnimalNotExists{
-        List<Animal> animalsFound = this.animals.stream().filter(animal-> animal.getAdoptionStatus()==adoptionStatus)
+    public List findAnimalsByAdoptionStatus(AdoptionStatus adoptionStatus) throws AnimalNotExists {
+        List<Animal> animalsFound = this.animals.stream().filter(animal -> animal.getAdoptionStatus() == adoptionStatus)
                 .collect(Collectors.toList());
         if (animalsFound.isEmpty()) {
             throw new AnimalNotExists();
@@ -213,7 +166,7 @@ public class AnimalsManager implements Serializable {
     }
 
     public List<Animal> findAvailableAnimals() throws AnimalNotExists {
-        List availableAnimals =this.animals.stream().filter((animal) -> {
+        List availableAnimals = this.animals.stream().filter((animal) -> {
             return animal.getAdoptionStatus() == AdoptionStatus.AVAILABLE;
         }).collect(Collectors.toList());
         if (availableAnimals.isEmpty()) {
@@ -229,11 +182,11 @@ public class AnimalsManager implements Serializable {
         saveManager();
     }
 
-    public void registerNewVetVisit(int animalID, VeterinaryVisit visit){
+    public void registerNewVetVisit(int animalID, VeterinaryVisit visit) {
         medicalHistoryManager.registerNewVisit(animalID, visit);
-        try{
+        try {
             this.saveManager();
-        }catch(IOException ioException){
+        } catch (IOException ioException) {
             System.out.println("IOException in AnimalsManager");
         }
     }

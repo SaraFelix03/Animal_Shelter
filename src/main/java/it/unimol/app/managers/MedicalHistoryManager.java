@@ -1,6 +1,5 @@
 package it.unimol.app.managers;
 
-import it.unimol.app.Animal;
 import it.unimol.app.VeterinaryVisit;
 import it.unimol.app.exceptions.NoRegistredVisitsException;
 
@@ -33,23 +32,23 @@ public class MedicalHistoryManager implements Serializable {
 
     protected void registerNewVisit(int animalID, VeterinaryVisit visit) {
         List<VeterinaryVisit> visits;
-        if(visitsHistory.containsKey(animalID)){
+        if (visitsHistory.containsKey(animalID)) {
             visits = visitsHistory.get(animalID);
-        }else{
+        } else {
             visits = new ArrayList<>(20);
         }
         visits.add(visit);
         visitsHistory.put(animalID, visits);
     }
 
-    public List<VeterinaryVisit> getAllVisits() throws NoRegistredVisitsException{
+    public List<VeterinaryVisit> getAllVisits() throws NoRegistredVisitsException {
         List<VeterinaryVisit> visits = new ArrayList<>(List.of());
 
         for (Map.Entry<Integer, List<VeterinaryVisit>> entry : visitsHistory.entrySet()) {
             visits.addAll(entry.getValue());
         }
 
-        if(visits.isEmpty()){
+        if (visits.isEmpty()) {
             throw new NoRegistredVisitsException();
         }
         return visits;

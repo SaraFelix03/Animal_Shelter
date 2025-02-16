@@ -9,11 +9,11 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class AdoptionPanel implements Panel{
+public class AdoptionPanel implements Panel {
 
     private AnimalsManager animalsManager;
 
-    public AdoptionPanel(AnimalsManager animalsManager){
+    public AdoptionPanel(AnimalsManager animalsManager) {
         this.animalsManager = animalsManager;
     }
 
@@ -25,9 +25,9 @@ public class AdoptionPanel implements Panel{
         int animalId = Integer.parseInt(sc.nextLine());
         Animal adoptedAnimal;
 
-        try{
+        try {
             adoptedAnimal = animalsManager.findAnimalByID(animalId);
-        }catch(AnimalNotExists animalNotExists){
+        } catch (AnimalNotExists animalNotExists) {
             System.out.println("Animal not found");
             return;
         }
@@ -35,22 +35,22 @@ public class AdoptionPanel implements Panel{
         printAdopterMenu();
         Adopter adopter;
 
-        try{
-            adopter=adopterMenuInputManager();
-        }catch(AdopterNotExists adopterNotExists){
+        try {
+            adopter = adopterMenuInputManager();
+        } catch (AdopterNotExists adopterNotExists) {
             System.out.println("Adopter not found!");
             return;
         }
 
-        ContractStatus contractStatus=manageContractOptions();
+        ContractStatus contractStatus = manageContractOptions();
 
         Adoption newAdoption = new Adoption(adoptedAnimal.getID(), adopter.getId(), LocalDate.now(),contractStatus);
 
-        try{
+        try {
             animalsManager.registerAdoption(adoptedAnimal, newAdoption);
-        }catch(AnimalAlreadyAdoptedException animalAlreadyAdoptedException){
+        } catch (AnimalAlreadyAdoptedException animalAlreadyAdoptedException) {
             System.out.println("Animal already adopted!");
-        }catch(IOException ioException){
+        } catch (IOException ioException) {
             System.out.println("IO error");
         }
 
@@ -59,7 +59,7 @@ public class AdoptionPanel implements Panel{
         System.out.println("ADOPTION SUCCESSFULLY ADDED!");
     }
 
-    public void printAdopterMenu(){
+    public void printAdopterMenu() {
         System.out.println("Choose an option:");
         System.out.println("1) Register a new Adopter");
         System.out.println("2) Register an existing Adopter");
@@ -98,7 +98,7 @@ public class AdoptionPanel implements Panel{
                     System.out.println("Country:");
                     String country = sc.nextLine();
 
-                    Address adopterAddress= new Address(street,streetNumber,city,postalCode,country);
+                    Address adopterAddress = new Address(street,streetNumber,city,postalCode,country);
 
                     System.out.println("Enter the new Adopter's telephone:");
                     String telephone = sc.nextLine();
@@ -113,17 +113,17 @@ public class AdoptionPanel implements Panel{
                     int adopterId = Integer.parseInt(sc.nextLine());
                     Adopter adopter;
 
-                    adopter= animalsManager.getAdoptionManager().findAdopterByID(adopterId);
+                    adopter = animalsManager.getAdoptionManager().findAdopterByID(adopterId);
 
                     return adopter;
 
                 default:
                     System.out.println("Invalid choice. Please enter 1 or 2.");
             }
-        }while(true);
+        } while (true);
     }
 
-    private ContractStatus manageContractOptions(){
+    private ContractStatus manageContractOptions() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Select the contract status:");
@@ -145,7 +145,7 @@ public class AdoptionPanel implements Panel{
                 default:
                     System.out.println("Invalid choice. Please enter 1, 2, or 3.");
             }
-        }while(true);
+        } while (true);
 
     }
 }

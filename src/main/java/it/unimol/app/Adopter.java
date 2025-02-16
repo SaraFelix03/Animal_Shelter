@@ -83,7 +83,7 @@ public class Adopter implements Serializable {
         this.email = email;
     }
 
-    public void addNewAdoptedAnimal(Animal animal){
+    public void addNewAdoptedAnimal(Animal animal) {
         adoptedAnimals.add(animal);
     }
 
@@ -94,7 +94,7 @@ public class Adopter implements Serializable {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", cdf='" + cdf + '\'' +
-                ", indirizzo=" + address.toString()+
+                ", indirizzo=" + address.toString() +
                 ", telephon='" + telephon + '\'' +
                 ", email='" + email + '\'' +
                 ", adoptedAnimals=" + adoptedAnimals +

@@ -3,28 +3,27 @@ package it.unimol.ui;
 import it.unimol.app.*;
 import it.unimol.app.exceptions.AnimalNotExists;
 import it.unimol.app.managers.AnimalsManager;
-import it.unimol.app.managers.MedicalHistoryManager;
 
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class VeterinaryVisitPanel implements Panel{
+public class VeterinaryVisitPanel implements Panel {
 
     private AnimalsManager animalsManager;
 
     public VeterinaryVisitPanel(AnimalsManager animalsManager) {
-        this.animalsManager=animalsManager;
+        this.animalsManager = animalsManager;
     }
 
-    public void start(){
+    public void start() {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter the animal's ID:");
         int animalId = Integer.parseInt(sc.nextLine());
 
-        try{
+        try {
             animalsManager.findAnimalByID(animalId);
-        }catch(AnimalNotExists animalNotExists){
+        } catch (AnimalNotExists animalNotExists) {
             System.out.println("Animal not found");
             return;
         }

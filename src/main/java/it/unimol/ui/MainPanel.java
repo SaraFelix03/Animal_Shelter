@@ -1,6 +1,5 @@
 package it.unimol.ui;
 
-import it.unimol.app.VeterinaryVisit;
 import it.unimol.app.managers.AdoptionManager;
 import it.unimol.app.managers.AnimalsManager;
 import it.unimol.app.managers.MedicalHistoryManager;
@@ -118,37 +117,37 @@ public class MainPanel implements Panel {
         } while (input < 0 || input > 5);
     }
 
-    private void addNewAnimal(){
+    private void addNewAnimal() {
         AnimalRegistrationPanel animalRegistrationPanel = new AnimalRegistrationPanel(animalsManager);
         animalRegistrationPanel.start();
     }
 
-    private void showAvaibleAnimals(){
+    private void showAvaibleAnimals() {
         AvailableAnimalsPanel availableAnimalsPanel = new AvailableAnimalsPanel(animalsManager);
         availableAnimalsPanel.start();
     }
 
-    private void registerNewAdoption(){
+    private void registerNewAdoption() {
         AdoptionPanel adoptionPanel = new AdoptionPanel(animalsManager);
         adoptionPanel.start();
     }
 
-    private void recordNewVisit(){
+    private void recordNewVisit() {
         VeterinaryVisitPanel veterinaryVisitPanel = new VeterinaryVisitPanel(animalsManager);
         veterinaryVisitPanel.start();
     }
 
-    private void showShelterStatistics(){
+    private void showShelterStatistics() {
         ShelterStatisticsPanel shelterStatisticsPanel = new ShelterStatisticsPanel(animalsManager);
         shelterStatisticsPanel.start();
     }
 
-    private void searchAnimals(){
+    private void searchAnimals() {
         AnimalResearchPanel animalResearchPanel = new AnimalResearchPanel(animalsManager);
         animalResearchPanel.start();
     }
 
-    private void showExpences(){
+    private void showExpences() {
         ExpencesPanel expencesPanel = new ExpencesPanel(animalsManager);
         expencesPanel.start();
     }

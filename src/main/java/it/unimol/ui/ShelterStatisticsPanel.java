@@ -2,12 +2,12 @@ package it.unimol.ui;
 
 import it.unimol.app.managers.AnimalsManager;
 
-public class ShelterStatisticsPanel implements Panel{
+public class ShelterStatisticsPanel implements Panel {
 
     private AnimalsManager animalsManager;
 
-    public ShelterStatisticsPanel(AnimalsManager animalsManager){
-        this.animalsManager=animalsManager;
+    public ShelterStatisticsPanel(AnimalsManager animalsManager) {
+        this.animalsManager = animalsManager;
     }
 
     @Override
