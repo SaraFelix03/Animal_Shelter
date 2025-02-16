@@ -26,7 +26,7 @@ public class MainPanel implements Panel {
 
     private MainPanel() {
         adoptionManager = AdoptionManager.getInstance();
-        animalsManager = AnimalsManager.getInstance();
+        animalsManager = AnimalsManager.getInstance("Shelter.sr");
         medicalHistoryManager = MedicalHistoryManager.getInstance();
     }
 
@@ -47,7 +47,7 @@ public class MainPanel implements Panel {
             System.exit(-1);
         }
 
-        animalsManager = AnimalsManager.getInstance();
+        animalsManager = AnimalsManager.getInstance("Shelter.sr");
 
         boolean exit = false;
         do {

@@ -14,25 +14,33 @@ import static it.unimol.app.enumerations.AdoptionStatus.WAITING;
 public class AnimalsManager implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    private static String serializationFileName;
+
     private static int idCounter;
     private static AnimalsManager instance;
     private List<Animal> animals;
     private static AdoptionManager adoptionManager;
     private static MedicalHistoryManager medicalHistoryManager;
 
-    private AnimalsManager() {
+    private AnimalsManager(String serializationFileName) {
         idCounter = 0;
-        this.animals = new ArrayList(100);
+        AnimalsManager.serializationFileName = serializationFileName;
+        this.animals = new ArrayList<>(100);
         adoptionManager = AdoptionManager.getInstance();
         medicalHistoryManager = MedicalHistoryManager.getInstance();
     }
 
-    public static AnimalsManager getInstance() {
+    public static AnimalsManager getInstance(String serializationFileName) {
         if (instance == null) {
-            instance = new AnimalsManager();
+            instance = new AnimalsManager(serializationFileName);
         }
 
         return instance;
+    }
+
+    public static void resetInstance() {
+        instance = null;
+        idCounter = 0;
     }
 
     public static int getNewID() {
@@ -68,12 +76,16 @@ public class AnimalsManager implements Serializable {
         return adoptionManager;
     }
 
+    public void createNewSerializationFile(String fileName){
+        serializationFileName = fileName;
+    }
+
     public static void AnimalsManagerInitialize() throws IOException {
         instance = loadManager();
     }
 
     private void saveManager() throws IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream("Shelter.sr");
+        FileOutputStream fileOutputStream = new FileOutputStream(serializationFileName);
 
         try {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
@@ -106,7 +118,7 @@ public class AnimalsManager implements Serializable {
 
     public static AnimalsManager loadManager() throws FileNotFoundException, IOException {
         try {
-            FileInputStream fileInputStream = new FileInputStream("Shelter.sr");
+            FileInputStream fileInputStream = new FileInputStream(serializationFileName);
 
             AnimalsManager var3;
             try {
@@ -139,7 +151,7 @@ public class AnimalsManager implements Serializable {
             fileInputStream.close();
             return var3;
         } catch (FileNotFoundException var8) {
-            return new AnimalsManager();
+            return new AnimalsManager(serializationFileName);
         } catch (ClassNotFoundException var9) {
             return null;
         }
@@ -154,14 +166,6 @@ public class AnimalsManager implements Serializable {
         }
     }
 
-    public void removeAnimal(Animal animal) throws AnimalNotExists, IOException {
-        if (!this.animals.contains(animal)) {
-            throw new AnimalNotExists();
-        } else {
-            this.animals.remove(animal);
-            instance.saveManager();
-        }
-    }
 
     public Animal findAnimalByID(int id) throws AnimalNotExists {
         return (Animal)this.animals.stream().filter((animal) -> {

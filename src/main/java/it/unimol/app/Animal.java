@@ -94,18 +94,19 @@ public class Animal implements Serializable {
         return "Animal{ID='" + this.ID + "', name='" + this.name + "', species='" + this.species + "', age=" + this.age + ", admissionDate=" + this.admissionDate + ", healthStatus=" + this.healthStatus + ", adoptionStatus=" + this.adoptionStatus + ", furtherInformation='" + this.furtherInformation + "'}";
     }
 
+    @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        } else if (!(o instanceof Animal)) {
-            return false;
-        } else {
-            Animal animal = (Animal)o;
-            return Objects.equals(this.ID, animal.ID) && Objects.equals(this.getSpecies(), animal.getSpecies());
-        }
+        if (this == o) return true;
+        if (!(o instanceof Animal animal)) return false;
+        return getID() == animal.getID() && Objects.equals(getName(), animal.getName())
+                && Objects.equals(getSpecies(), animal.getSpecies()) && Objects.equals(getAge(), animal.getAge())
+                && Objects.equals(getAdmissionDate(), animal.getAdmissionDate())
+                && getHealthStatus() == animal.getHealthStatus() && getAdoptionStatus() == animal.getAdoptionStatus();
     }
 
+    @Override
     public int hashCode() {
-        return Objects.hash(new Object[]{this.ID, this.getSpecies()});
+        return Objects.hash(getID(), getName(), getSpecies(), getAge(), getAdmissionDate(), getHealthStatus(),
+                getAdoptionStatus());
     }
 }
