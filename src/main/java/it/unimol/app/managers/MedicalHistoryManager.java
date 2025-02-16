@@ -27,6 +27,10 @@ public class MedicalHistoryManager implements Serializable {
         return instance;
     }
 
+    public static void resetInstance() {
+        instance = null;
+    }
+
     protected void registerNewVisit(int animalID, VeterinaryVisit visit) {
         List<VeterinaryVisit> visits;
         if(visitsHistory.containsKey(animalID)){
