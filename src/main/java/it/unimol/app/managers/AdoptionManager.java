@@ -31,6 +31,13 @@ public class AdoptionManager implements Serializable {
         return instance;
     }
 
+    public static void resetInstance() {
+        instance = null;
+        adopterIdCounter=0;
+        adopterList.clear();
+        adoptions.clear();
+    }
+
     public static int getNewAdopterID() {
         adopterIdCounter++;
         return adopterIdCounter;
@@ -47,6 +54,7 @@ public class AdoptionManager implements Serializable {
     public void registerNewAdopter(Adopter adopter) throws AdopterAlreadyRegistered {
         if(!adopterList.contains(adopter)) {
             adopterList.add(adopter);
+            return;
         }
         throw new AdopterAlreadyRegistered();
     }
