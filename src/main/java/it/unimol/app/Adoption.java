@@ -1,6 +1,7 @@
 package it.unimol.app;
 
 import it.unimol.app.enumerations.ContractStatus;
+import lombok.Generated;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -39,39 +40,48 @@ public class Adoption implements Serializable {
         this.contractStatus = contractStatus;
     }
 
+    @Generated
     public int getAdopterId() {
         return adopterId;
     }
 
+    @Generated
     public void setAdopterId(int adopterId) {
         this.adopterId = adopterId;
     }
 
+    @Generated
     public int getAnimalId() {
         return animalId;
     }
 
+    @Generated
     public void setAnimalId(int animalId) {
         this.animalId = animalId;
     }
 
+    @Generated
     public LocalDate getAdoptedOn() {
         return adoptedOn;
     }
 
+    @Generated
     public void setAdoptedOn(LocalDate adoptedOn) {
         this.adoptedOn = adoptedOn;
     }
 
+    @Generated
     public ContractStatus getContractStatus() {
         return contractStatus;
     }
 
+    @Generated
     public void setContractStatus(ContractStatus contractStatus) {
         this.contractStatus = contractStatus;
     }
 
     @Override
+    @Generated
     public String toString() {
         return "Adoption{" +
                 "adopter_id=" + adopterId +

@@ -3,6 +3,7 @@ package it.unimol.app;
 import it.unimol.app.enumerations.AdoptionStatus;
 import it.unimol.app.enumerations.HealthStatus;
 import it.unimol.app.managers.AnimalsManager;
+import lombok.Generated;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -51,66 +52,83 @@ public class Animal implements Serializable {
         this.furtherInformation = furtherInformation;
     }
 
+    @Generated
     public int getID() {
         return this.ID;
     }
 
+    @Generated
     public String getName() {
         return this.name;
     }
 
+    @Generated
     public void setName(String name) {
         this.name = name;
     }
 
+    @Generated
     public String getSpecies() {
         return this.species;
     }
 
+    @Generated
     public void setSpecies(String species) {
         this.species = species;
     }
 
+    @Generated
     public String getAge() {
         return this.age;
     }
 
+    @Generated
     public void setAge(String age) {
         this.age = age;
     }
 
+    @Generated
     public LocalDate getAdmissionDate() {
         return this.admissionDate;
     }
 
+    @Generated
     public void setAdmissionDate(LocalDate admissionDate) {
         this.admissionDate = admissionDate;
     }
 
+    @Generated
     public HealthStatus getHealthStatus() {
         return this.healthStatus;
     }
 
+    @Generated
     public void setHealthStatus(HealthStatus healthStatus) {
         this.healthStatus = healthStatus;
     }
 
+    @Generated
     public AdoptionStatus getAdoptionStatus() {
         return this.adoptionStatus;
     }
 
+    @Generated
     public void setAdoptionStatus(AdoptionStatus adoptionStatus) {
         this.adoptionStatus = adoptionStatus;
     }
 
+    @Generated
     public String getFurtherInformation() {
         return this.furtherInformation;
     }
 
+    @Generated
     public void setFurtherInformation(String furtherInformation) {
         this.furtherInformation = furtherInformation;
     }
 
+    @Override
+    @Generated
     public String toString() {
         return "Animal{ID='" + this.ID + "', name='" + this.name + "', species='" + this.species + "', age=" + this.age + ", admissionDate=" + this.admissionDate + ", healthStatus=" + this.healthStatus + ", adoptionStatus=" + this.adoptionStatus + ", furtherInformation='" + this.furtherInformation + "'}";
     }
@@ -123,7 +141,7 @@ public class Animal implements Serializable {
         if (!(o instanceof Animal animal)) {
             return false;
         }
-        return getID() == animal.getID() && Objects.equals(getName(), animal.getName())
+        return Objects.equals(getName(), animal.getName())
                 && Objects.equals(getSpecies(), animal.getSpecies()) && Objects.equals(getAge(), animal.getAge())
                 && Objects.equals(getAdmissionDate(), animal.getAdmissionDate())
                 && getHealthStatus() == animal.getHealthStatus() && getAdoptionStatus() == animal.getAdoptionStatus();
@@ -131,7 +149,7 @@ public class Animal implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getID(), getName(), getSpecies(), getAge(), getAdmissionDate(), getHealthStatus(),
+        return Objects.hash(getName(), getSpecies(), getAge(), getAdmissionDate(), getHealthStatus(),
                 getAdoptionStatus());
     }
 }

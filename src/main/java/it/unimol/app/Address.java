@@ -1,5 +1,7 @@
 package it.unimol.app;
 
+import lombok.Generated;
+
 import java.io.Serializable;
 
 /**
@@ -37,47 +39,59 @@ public class Address implements Serializable {
         this.country = country;
     }
 
+    @Generated
     public String getStreet() {
         return street;
     }
 
+    @Generated
     public void setStreet(String street) {
         this.street = street;
     }
 
+    @Generated
     public String getStreetNumber() {
         return streetNumber;
     }
 
+    @Generated
     public void setStreetNumber(String streetNumber) {
         this.streetNumber = streetNumber;
     }
 
+    @Generated
     public String getCity() {
         return city;
     }
 
+    @Generated
     public void setCity(String city) {
         this.city = city;
     }
 
+    @Generated
     public String getPostalCode() {
         return postalCode;
     }
 
+    @Generated
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
 
+    @Generated
     public String getCountry() {
         return country;
     }
 
+    @Generated
     public void setCountry(String country) {
         this.country = country;
     }
 
+
     @Override
+    @Generated
     public String toString() {
         return "Address{" +
                 "street='" + street + '\'' +

@@ -54,7 +54,6 @@ public class AdoptionPanel implements Panel {
             System.out.println("IO error");
         }
 
-        adopter.addNewAdoptedAnimal(adoptedAnimal);
 
         System.out.println("ADOPTION SUCCESSFULLY ADDED!");
     }

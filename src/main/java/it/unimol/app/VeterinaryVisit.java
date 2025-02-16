@@ -1,5 +1,7 @@
 package it.unimol.app;
 
+import lombok.Generated;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -40,47 +42,58 @@ public class VeterinaryVisit implements Serializable {
         this.cost = cost;
     }
 
+    @Generated
     public LocalDate getDateOfVisit() {
         return dateOfVisit;
     }
 
+    @Generated
     public void setDateOfVisit(LocalDate dateOfVisit) {
         this.dateOfVisit = dateOfVisit;
     }
 
+    @Generated
     public String getVeterinaryName() {
         return veterinaryName;
     }
 
+    @Generated
     public void setVeterinaryName(String veterinaryName) {
         this.veterinaryName = veterinaryName;
     }
 
+    @Generated
     public String getDiagnosis() {
         return diagnosis;
     }
 
+    @Generated
     public void setDiagnosis(String diagnosis) {
         this.diagnosis = diagnosis;
     }
 
+    @Generated
     public String getPrescriptions() {
         return prescriptions;
     }
 
+    @Generated
     public void setPrescriptions(String prescriptions) {
         this.prescriptions = prescriptions;
     }
 
+    @Generated
     public Float getCost() {
         return cost;
     }
 
+    @Generated
     public void setCost(Float cost) {
         this.cost = cost;
     }
 
     @Override
+    @Generated
     public String toString() {
         return "VeterinaryVisit{" +
                 "dateOfVisit=" + dateOfVisit +

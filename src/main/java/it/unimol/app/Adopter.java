@@ -1,10 +1,9 @@
 package it.unimol.app;
 
 import it.unimol.app.managers.AdoptionManager;
+import lombok.Generated;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Represents an adopter who can adopt animals from the shelter.
@@ -25,8 +24,6 @@ public class Adopter implements Serializable {
     private Address address;
     private String telephon;
     private String email;
-    private List<Animal> adoptedAnimals;
-
 
     /**
      * Constructs an {@code Adopter} object and assigns a unique ID.
@@ -47,72 +44,75 @@ public class Adopter implements Serializable {
         this.address = address;
         this.telephon = telephone;
         this.email = email;
-        this.adoptedAnimals = new ArrayList<Animal>(10);
     }
 
+    @Generated
     public int getId() {
         return id;
     }
 
+    @Generated
     public String getName() {
         return name;
     }
 
+    @Generated
     public void setName(String name) {
         this.name = name;
     }
 
+    @Generated
     public String getSurname() {
         return surname;
     }
 
+    @Generated
     public void setSurname(String surname) {
         this.surname = surname;
     }
 
+    @Generated
     public String getCdf() {
         return cdf;
     }
 
+    @Generated
     public void setCdf(String cdf) {
         this.cdf = cdf;
     }
 
+    @Generated
     public Address getAddress() {
         return address;
     }
 
+    @Generated
     public void setAddress(Address address) {
         this.address = address;
     }
 
+    @Generated
     public String getTelephon() {
         return telephon;
     }
 
+    @Generated
     public void setTelephon(String telephon) {
         this.telephon = telephon;
     }
 
+    @Generated
     public String getEmail() {
         return email;
     }
 
+    @Generated
     public void setEmail(String email) {
         this.email = email;
     }
 
-
-    /**
-     * Adds a new adopted animal to the adopter's list.
-     *
-     * @param animal The animal to be added.
-     */
-    public void addNewAdoptedAnimal(Animal animal) {
-        adoptedAnimals.add(animal);
-    }
-
     @Override
+    @Generated
     public String toString() {
         return "Adopter{" +
                 "id=" + id +
@@ -122,7 +122,6 @@ public class Adopter implements Serializable {
                 ", indirizzo=" + address.toString() +
                 ", telephon='" + telephon + '\'' +
                 ", email='" + email + '\'' +
-                ", adoptedAnimals=" + adoptedAnimals +
                 '}';
     }
 }

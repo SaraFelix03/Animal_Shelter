@@ -3,6 +3,7 @@ package it.unimol.app.managers;
 import it.unimol.app.*;
 import it.unimol.app.enumerations.*;
 import it.unimol.app.exceptions.*;
+import lombok.Generated;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -95,6 +96,7 @@ public class AnimalsManager implements Serializable {
      *
      * @return The last assigned ID.
      */
+    @Generated
     public static int getLastID() {
         return idCounter;
     }
@@ -115,18 +117,15 @@ public class AnimalsManager implements Serializable {
         return (int) this.animals.stream().filter(animal -> animal.getHealthStatus() == HealthStatus.CRITICAL).count();
     }
 
+    @Generated
     public MedicalHistoryManager getMedicalHistoryManager() {
         return medicalHistoryManager;
     }
 
+    @Generated
     public AdoptionManager getAdoptionManager() {
         return adoptionManager;
     }
-
-    public void createNewSerializationFile(String fileName) {
-        serializationFileName = fileName;
-    }
-
 
     /**
      * Initializes the AnimalsManager by loading data from the serialized file.

@@ -21,12 +21,20 @@ class MedicalHistoryManagerTest {
     }
 
     @Test
-    void testRegisterNewVisit() {
-        VeterinaryVisit visit = new VeterinaryVisit(LocalDate.now(), "Dr. Rossi",
-                "Influenza", "Antibiotico", 50.0f);
+    void testRegisterNewVisit_ExistingAnimal() throws NoRegistredVisitsException{
+        int animalID = 1;
+        VeterinaryVisit visit1 = new VeterinaryVisit(LocalDate.now(), "Dr. Bianchi",
+                "Otite", "Gocce auricolari", 40.0f);
+        medicalHistoryManager.registerNewVisit(animalID, visit1);
 
-        assertDoesNotThrow(() -> medicalHistoryManager.registerNewVisit(1, visit));
+        VeterinaryVisit visit2 = new VeterinaryVisit(LocalDate.now().minusDays(10), "Dr. Verdi",
+                "Frattura", "Fasciatura", 100.0f);
+        medicalHistoryManager.registerNewVisit(animalID, visit2);
+
+        List<VeterinaryVisit> visits = medicalHistoryManager.getAllVisits();
+        assertEquals(2, visits.size(), "Both visits should be registered under the same animalID");
     }
+
 
     @Test
     void testGetAllVisitsSuccess() throws Exception {
