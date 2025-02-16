@@ -8,6 +8,16 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
+
+/**
+ * Represents an animal in the shelter.
+ * Stores information such as species, age, health status, and adoption status.
+ *
+ * Implements {@link Serializable} to allow object serialization.
+ *
+ * @author Sara F.C.
+ * @version 1.0
+ */
 public class Animal implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -20,6 +30,17 @@ public class Animal implements Serializable {
     private AdoptionStatus adoptionStatus;
     private String furtherInformation;
 
+    /**
+     * Constructs an {@code Animal} object.
+     *
+     * @param name              The animal's name.
+     * @param species           The species of the animal.
+     * @param age               The animal's age.
+     * @param admissionDate     The date the animal was admitted to the shelter.
+     * @param healthStatus      The current health status of the animal.
+     * @param adoptionStatus    The adoption status of the animal.
+     * @param furtherInformation Any additional information about the animal.
+     */
     public Animal(String name, String species, String age, LocalDate admissionDate, HealthStatus healthStatus, AdoptionStatus adoptionStatus, String furtherInformation) {
         this.name = name;
         this.species = species;

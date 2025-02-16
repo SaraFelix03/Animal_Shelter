@@ -5,6 +5,16 @@ import it.unimol.app.enumerations.ContractStatus;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+
+/**
+ * Represents an adoption event in the system.
+ * Links an adopter to an animal with the adoption date and contract status.
+ *
+ * Implements {@link Serializable} to allow object serialization.
+ *
+ * @author Sara F.C.
+ * @version 1.0
+ */
 public class Adoption implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -13,6 +23,15 @@ public class Adoption implements Serializable {
     private LocalDate adoptedOn;
     private ContractStatus contractStatus;
 
+
+    /**
+     * Constructs an {@code Adoption} object.
+     *
+     * @param adopterId      The ID of the adopter.
+     * @param animalId       The ID of the adopted animal.
+     * @param adoptedOn      The date of adoption.
+     * @param contractStatus The status of the adoption contract.
+     */
     public Adoption(int adopterId, int animalId, LocalDate adoptedOn, ContractStatus contractStatus) {
         this.adopterId = adopterId;
         this.animalId = animalId;

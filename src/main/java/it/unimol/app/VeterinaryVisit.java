@@ -3,6 +3,16 @@ package it.unimol.app;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+
+/**
+ * Represents a veterinary visit for an animal.
+ * Stores visit details such as date, diagnosis, and cost.
+ *
+ * Implements {@link Serializable} to allow object serialization.
+ *
+ * @author Sara F.C.
+ * @version 1.0
+ */
 public class VeterinaryVisit implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -12,6 +22,15 @@ public class VeterinaryVisit implements Serializable {
     private String prescriptions;
     private Float cost;
 
+    /**
+     * Constructs a {@code VeterinaryVisit} object.
+     *
+     * @param dateOfVisit   The date of the visit.
+     * @param veterinaryName The name of the veterinarian.
+     * @param diagnosis     The diagnosis given during the visit.
+     * @param prescriptions The prescribed medications or treatments.
+     * @param cost          The cost of the visit.
+     */
     public VeterinaryVisit(LocalDate dateOfVisit, String veterinaryName,
                            String diagnosis, String prescriptions, Float cost) {
         this.dateOfVisit = dateOfVisit;

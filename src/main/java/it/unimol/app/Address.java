@@ -2,6 +2,15 @@ package it.unimol.app;
 
 import java.io.Serializable;
 
+/**
+ * Represents an address associated with an adopter.
+ * This class is used to store address details such as street, city, and postal code.
+ *
+ * Implements {@link Serializable} to allow object serialization.
+ *
+ * @author Sara F.C
+ * @version 1.0
+ */
 public class Address implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -11,6 +20,15 @@ public class Address implements Serializable {
     private String postalCode;
     private String country;
 
+    /**
+     * Constructs an {@code Address} object.
+     *
+     * @param street       The street name.
+     * @param streetNumber The street number.
+     * @param city         The city name.
+     * @param postalCode   The postal code.
+     * @param country      The country name.
+     */
     public Address(String street, String streetNumber, String city, String postalCode, String country) {
         this.street = street;
         this.streetNumber = streetNumber;

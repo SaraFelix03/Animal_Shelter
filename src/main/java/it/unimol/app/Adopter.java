@@ -6,6 +6,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents an adopter who can adopt animals from the shelter.
+ * Stores personal details and a list of adopted animals.
+ *
+ * Implements {@link Serializable} to allow object serialization.
+ *
+ * @author Sara F.C.
+ * @version 1.0
+ */
 public class Adopter implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -19,6 +28,16 @@ public class Adopter implements Serializable {
     private List<Animal> adoptedAnimals;
 
 
+    /**
+     * Constructs an {@code Adopter} object and assigns a unique ID.
+     *
+     * @param name     The adopter's first name.
+     * @param surname  The adopter's last name.
+     * @param cdf      The adopter's identification code.
+     * @param address  The adopter's address.
+     * @param telephone The adopter's contact number.
+     * @param email    The adopter's email address.
+     */
     public Adopter(String name, String surname, String cdf, Address address,
                    String telephone, String email) {
         this.id = AdoptionManager.getNewAdopterID();
@@ -83,6 +102,12 @@ public class Adopter implements Serializable {
         this.email = email;
     }
 
+
+    /**
+     * Adds a new adopted animal to the adopter's list.
+     *
+     * @param animal The animal to be added.
+     */
     public void addNewAdoptedAnimal(Animal animal) {
         adoptedAnimals.add(animal);
     }
