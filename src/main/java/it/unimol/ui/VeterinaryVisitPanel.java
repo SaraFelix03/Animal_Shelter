@@ -1,6 +1,6 @@
 package it.unimol.ui;
 
-import it.unimol.app.*;
+import it.unimol.app.VeterinaryVisit;
 import it.unimol.app.exceptions.AnimalNotExists;
 import it.unimol.app.managers.AnimalsManager;
 
@@ -41,10 +41,7 @@ public class VeterinaryVisitPanel implements Panel {
         String prescriptions = sc.nextLine();
 
         System.out.println("Enter the cost of the visit:");
-        Float visitCost = Float.parseFloat((sc.nextLine()));
-
-        System.out.println("City:");
-        String city = sc.nextLine();
+        Float visitCost = Float.parseFloat(sc.nextLine());
 
         VeterinaryVisit newVisit = new VeterinaryVisit(visitDate,nameSurname,diagnosis,prescriptions,visitCost);
 

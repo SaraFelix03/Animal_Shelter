@@ -7,7 +7,7 @@ public enum HealthStatus {
 
     private String description;
 
-    private HealthStatus(String description) {
+    HealthStatus(String description) {
         this.description = description;
     }
 

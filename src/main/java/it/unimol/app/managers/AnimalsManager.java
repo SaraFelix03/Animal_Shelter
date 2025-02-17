@@ -1,8 +1,13 @@
 package it.unimol.app.managers;
 
-import it.unimol.app.*;
-import it.unimol.app.enumerations.*;
-import it.unimol.app.exceptions.*;
+import it.unimol.app.Adoption;
+import it.unimol.app.Animal;
+import it.unimol.app.VeterinaryVisit;
+import it.unimol.app.enumerations.HealthStatus;
+import it.unimol.app.exceptions.AnimalAlreadyRegistered;
+import it.unimol.app.exceptions.AnimalNotExists;
+import it.unimol.app.exceptions.AnimalAlreadyAdoptedException;
+import it.unimol.app.enumerations.AdoptionStatus;
 import lombok.Generated;
 
 import java.io.*;

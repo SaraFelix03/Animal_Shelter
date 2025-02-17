@@ -1,7 +1,8 @@
 package it.unimol.ui;
 
 import it.unimol.app.Animal;
-import it.unimol.app.enumerations.*;
+import it.unimol.app.enumerations.AdoptionStatus;
+import it.unimol.app.enumerations.HealthStatus;
 import it.unimol.app.exceptions.AnimalAlreadyRegistered;
 import it.unimol.app.managers.AnimalsManager;
 

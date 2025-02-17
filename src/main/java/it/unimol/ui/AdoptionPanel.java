@@ -1,9 +1,14 @@
 package it.unimol.ui;
 
-import it.unimol.app.*;
+import it.unimol.app.Address;
+import it.unimol.app.Adopter;
+import it.unimol.app.Adoption;
+import it.unimol.app.Animal;
 import it.unimol.app.enumerations.ContractStatus;
-import it.unimol.app.exceptions.*;
-import it.unimol.app.managers.*;
+import it.unimol.app.exceptions.AdopterNotExists;
+import it.unimol.app.exceptions.AnimalAlreadyAdoptedException;
+import it.unimol.app.exceptions.AnimalNotExists;
+import it.unimol.app.managers.AnimalsManager;
 
 import java.io.IOException;
 import java.time.LocalDate;

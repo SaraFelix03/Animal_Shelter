@@ -1,9 +1,6 @@
 package it.unimol.ui;
 
-import it.unimol.app.managers.AdoptionManager;
 import it.unimol.app.managers.AnimalsManager;
-import it.unimol.app.managers.MedicalHistoryManager;
-
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -19,14 +16,10 @@ public class MainPanel implements Panel {
     private static final int ESCI = 0;
 
     private static MainPanel instance;
-    private static AdoptionManager adoptionManager;
     private AnimalsManager animalsManager;
-    private MedicalHistoryManager medicalHistoryManager;
 
     private MainPanel() {
-        adoptionManager = AdoptionManager.getInstance();
         animalsManager = AnimalsManager.getInstance("Shelter.sr");
-        medicalHistoryManager = MedicalHistoryManager.getInstance();
     }
 
     public static MainPanel getInstance() {

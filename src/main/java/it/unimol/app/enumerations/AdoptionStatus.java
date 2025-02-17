@@ -5,6 +5,6 @@ public enum AdoptionStatus {
     ADOPTED,
     WAITING;
 
-    private AdoptionStatus() {
+    AdoptionStatus() {
     }
 }
