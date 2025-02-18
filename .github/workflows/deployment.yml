@@ -1,9 +1,7 @@
-name: Release and Deploy to Docker Hub
+name: Manual Release & Deploy to Docker Hub
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 env:
   IMAGE_NAME: animal-shelter
@@ -26,7 +24,7 @@ jobs:
           distribution: 'corretto'
           java-version: '17'
 
-      - name: Build the project with Maven
+      - name: Build the Maven project
         run: mvn clean package
 
       - name: Log in to Docker Hub
