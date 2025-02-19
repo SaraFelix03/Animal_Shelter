@@ -49,18 +49,16 @@ jobs:
           tag_name: ${{ github.ref_name }}
           release_name: "Release ${{ github.ref_name }}"
           body: |
-            ## How to use this version
+            ## Instructions for this version of "Animal Shelter Management System"
             
-            ### Pull the image:
+            ### How to pull the image:
             ```bash
             docker pull ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}
             ```
 
-            ### Run the container:
+            ### How to run the container:
             ```bash
             docker run -it -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}
             ```
           draft: false
           prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
