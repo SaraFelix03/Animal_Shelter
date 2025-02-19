@@ -38,6 +38,12 @@
         </dependency>
     </dependencies>
 
+    <scm>
+        <connection>scm:git:https://github.com/SaraFelix03/Animal_Shelter.git</connection>
+        <developerConnection>scm:git:https://github.com/SaraFelix03/Animal_Shelter.git</developerConnection>
+        <url>https://github.com/SaraFelix03/Animal_Shelter.git</url>
+    </scm>
+
     <build>
         <plugins>
             <plugin>
@@ -199,11 +205,6 @@
                 <configuration>
                     <tagNameFormat>v@{project.version}</tagNameFormat>
                     <releaseProfiles>release</releaseProfiles>
-                    <scm>
-                        <connection>scm:git@github.com:SaraFelix03/Animal_Shelter.git</connection>
-                        <developerConnection>scm:git@github.com:SaraFelix03/Animal_Shelter.git</developerConnection>
-                        <url>https://github.com/SaraFelix03/Animal_Shelter.git</url>
-                    </scm>
                 </configuration>
             </plugin>
 
