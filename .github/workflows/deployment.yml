@@ -1,8 +1,9 @@
-name: Manual Release & Deploy to Docker Hub
+name: Release & Deploy to Docker Hub
 
 on:
-  workflow_dispatch:
-
+  push:
+    tags:
+      - 'v*'
 env:
   IMAGE_NAME: animal-shelter
 

@@ -3,13 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <scm>
-        <connection>scm:git:https://github.com/TUO-NOME-UTENTE/TUO-REPO.git</connection>
-        <developerConnection>scm:git:git@github.com:TUO-NOME-UTENTE/TUO-REPO.git</developerConnection>
-        <url>https://github.com/TUO-NOME-UTENTE/TUO-REPO</url>
-        <tag>HEAD</tag>
-    </scm>
-
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>it.unimol</groupId>
@@ -202,12 +195,15 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>3.0.1</version>
+                <version>3.0.0-M1</version>
                 <configuration>
-                    <tagBase>https://github.com/SaraFelix03/Animal_Shelter/tags</tagBase>
-                    <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <scmCommentPrefix>[RELEASE] </scmCommentPrefix>
-                    <preparationGoals>clean verify</preparationGoals>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                    <releaseProfiles>release</releaseProfiles>
+                    <scm>
+                        <connection>scm:git@github.com:SaraFelix03/Animal_Shelter.git</connection>
+                        <developerConnection>scm:git@github.com:SaraFelix03/Animal_Shelter.git</developerConnection>
+                        <url>https://github.com/SaraFelix03/Animal_Shelter.git</url>
+                    </scm>
                 </configuration>
             </plugin>
 
