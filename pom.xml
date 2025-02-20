@@ -39,7 +39,7 @@
     <scm>
         <connection>scm:git:https://github.com/SaraFelix03/Animal_Shelter.git</connection>
         <developerConnection>scm:git:https://github.com/SaraFelix03/Animal_Shelter.git</developerConnection>
-        <url>https://github.com/SaraFelix03/Animal_Shelter.git</url>
+        <url>https://github.com/SaraFelix03/Animal_Shelter</url>
       <tag>HEAD</tag>
   </scm>
 
@@ -203,7 +203,6 @@
                 <version>3.0.0-M1</version>
                 <configuration>
                     <tagNameFormat>v@{project.version}</tagNameFormat>
-                    <releaseProfiles>release</releaseProfiles>
                 </configuration>
             </plugin>
 
