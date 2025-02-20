@@ -29,11 +29,11 @@ The system allows **adding animals, registering adoptions, tracking veterinary v
 ---
 ## ⚙️ Useful commands
 - **Version management**:
-use 'mvn release:prepare release:perform -Dgoals=install' to manage versioning 
+use `mvn release:prepare release:perform -Dgoals=install` to manage versioning 
 and automate the release process
 
 - **Documentation**:
-use 'mvn site' to generate it
+use `mvn site` to generate it
 
 - **Coverage report**:
-use 'mvn jacoco:report' to generate a report of the total code and brench coverage in html
+use `mvn jacoco:report` to generate a report of the total code and branch coverage in html
