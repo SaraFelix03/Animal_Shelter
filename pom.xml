@@ -5,7 +5,7 @@
 
     <groupId>it.unimol</groupId>
     <artifactId>Animal_Shelter</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -40,7 +40,7 @@
         <connection>scm:git:https://github.com/SaraFelix03/Animal_Shelter.git</connection>
         <developerConnection>scm:git:https://github.com/SaraFelix03/Animal_Shelter.git</developerConnection>
         <url>https://github.com/SaraFelix03/Animal_Shelter</url>
-      <tag>HEAD</tag>
+      <tag>v1.0.1</tag>
   </scm>
 
     <build>
